@@ -43,6 +43,14 @@ test('foo is bar', function(assert) {
 *Note: hyphenated file names like `tests/assertions/double-trouble.js`
 will be camelized: `assert.doubleTrouble`*
 
+### Blueprint
+
+You can generate a new assertion by using the `assertion` blueprint:
+
+```
+ember g assertion double-trouble
+```
+
 ### Assertion
 
 A `context` is always injected as the first argument. You don't need to
