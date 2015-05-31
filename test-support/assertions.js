@@ -13,17 +13,15 @@ function assertions() {
     const entries = Ember.A(Object.keys(requirejs.entries));
     const pattern = new RegExp(`^${modulePrefix}/tests/assertions/[\\w-]+$`);
 
-    const _assertions = entries.filter(function(entry) {
-      return entry.match(pattern);
-    });
+    assertionCache = entries.reduce(function(entries, entry) {
+      if (entry.match(pattern)) {
+        let splitEntry = entry.split('/');
+        let fn = requirejs(entry)['default'];
 
-    assertionCache = _assertions.reduce(function(entries, entry) {
-      let splitEntry = entry.split('/');
-      let fn = requirejs(entry)['default'];
-
-      entry = splitEntry[splitEntry.length - 1];
-      entry = camelize(entry);
-      entries[entry] = fn;
+        entry = splitEntry[splitEntry.length - 1];
+        entry = camelize(entry);
+        entries[entry] = fn;
+      }
 
       return entries;
     }, {});
