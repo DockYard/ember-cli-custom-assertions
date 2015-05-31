@@ -12,10 +12,6 @@ Add custom assertions to your Ember test suite.
 
 If it is a bug [please open an issue on GitHub](https://github.com/dockyard/ember-cli-custom-assertions/issues).
 
-## Setup ##
-
-Currently you must manually 
-
 ## Usage ##
 
 Add new assertions to `test/assertions`. Then use on the `assert` object in your test suite.
