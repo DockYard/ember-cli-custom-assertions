@@ -1,5 +1,7 @@
 # ember-cli-custom-assertions #
 
+[![Build Status](https://secure.travis-ci.org/dockyard/ember-cli-custom-assertions.svg?branch=master)](http://travis-ci.org/dockyard/ember-cli-custom-assertions)
+
 ## About ##
 
 Add custom assertions to your Ember test suite.
@@ -37,6 +39,9 @@ test('foo is bar', function(assert) {
   });
 });
 ```
+
+*Note: hyphenated file names like `tests/assertions/double-trouble.js`
+will be camelized: `assert.doubleTrouble`*
 
 ### Assertion
 

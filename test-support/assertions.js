@@ -1,12 +1,20 @@
 import Ember from 'ember';
+import { default as environment } from '../config/environment';
+
+const {
+  camelize
+} = Ember.String;
 
 let assertionCache;
 
 function assertions() {
   if (!assertionCache) {
+    const { modulePrefix } = environment;
     const entries = Ember.A(Object.keys(requirejs.entries));
-    let _assertions = entries.filter(function(entry) {
-      return entry.match(/^dummy\/tests\/assertions\/\w+$/);
+    const pattern = new RegExp(`^${modulePrefix}/tests/assertions/[\\w-]+$`);
+
+    const _assertions = entries.filter(function(entry) {
+      return entry.match(pattern);
     });
 
     assertionCache = _assertions.reduce(function(entries, entry) {
@@ -14,6 +22,7 @@ function assertions() {
       let fn = requirejs(entry)['default'];
 
       entry = splitEntry[splitEntry.length - 1];
+      entry = camelize(entry);
       entries[entry] = fn;
 
       return entries;
