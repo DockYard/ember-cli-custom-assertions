@@ -34,7 +34,7 @@ test('foo is bar', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.contains('Foo Bar');
+    assert.contains('.foo', 'Foo Bar');
   });
 });
 ```
@@ -72,7 +72,7 @@ cleanup in `afterEach`:
 
 ```javascript
 // ...
-import { assertionInjector, assertionCleanup } from '../assertions'; 
+import { assertionInjector, assertionCleanup } from '../assertions';
 
 module('Acceptance | foo', {
   beforeEach: function() {
@@ -82,7 +82,7 @@ module('Acceptance | foo', {
 
   afterEach: function() {
     Ember.run(application, 'destroy');
-    applicationCleanup(application);
+    assertionCleanup(application);
   }
 });
 ```
