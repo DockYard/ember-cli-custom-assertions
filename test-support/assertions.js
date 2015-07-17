@@ -38,7 +38,7 @@ function assertionInjector(context) {
       let fn = _assertions[assertion];
       let args = Array.prototype.slice.call(arguments);
 
-      if (content) {
+      if (context) {
         args.unshift(context);
       }
 
