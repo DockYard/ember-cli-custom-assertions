@@ -1,4 +1,4 @@
-var stringUtil = require('ember-cli/lib/utilities/string');
+var stringUtil = require('ember-cli-string-utils');
 
 module.exports = {
   description: 'Generates a new custom assertion into tests/assertions/',
