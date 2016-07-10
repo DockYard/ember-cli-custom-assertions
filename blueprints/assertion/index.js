@@ -1,4 +1,4 @@
-var stringUtil = require('ember-cli-string-utils');
+const stringUtil = require('ember-cli-string-utils');
 
 module.exports = {
   description: 'Generates a new custom assertion into tests/assertions/',
@@ -14,4 +14,4 @@ module.exports = {
       camelName: camelName
     };
   }
-}
+};
