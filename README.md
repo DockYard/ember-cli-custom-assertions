@@ -1,6 +1,6 @@
 # ember-cli-custom-assertions #
 
-[![Build Status](https://secure.travis-ci.org/dockyard/ember-cli-custom-assertions.svg?branch=master)](http://travis-ci.org/dockyard/ember-cli-custom-assertions)
+[![Build Status](https://secure.travis-ci.org/DockYard/ember-cli-custom-assertions.svg?branch=master)](http://travis-ci.org/DockYard/ember-cli-custom-assertions)
 
 ## About ##
 
