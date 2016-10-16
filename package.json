@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-custom-assertions",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Easily add custom assertions to your Ember test suite",
   "directories": {
     "doc": "doc",
