@@ -1,4 +1,4 @@
 export default function doubleTrouble() {
-  this.push(true);
-  this.push(true);
+  this.pushResult({ result: true });
+  this.pushResult({ result: true });
 }

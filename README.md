@@ -23,10 +23,12 @@ For example:
 ```javascript
 // tests/assertions/contains.js
 export default function(context, element, text, message) {
-  var matches = context.$(element).text().match(new RegExp(text));
   message = message || `${element} should contain "${text}"`;
+  let actual = context.$(element).text();
+  let expected = text;
+  let result = !!actual.match(new RegExp(expected));
 
-  this.push(!!matches, matches, text, message);
+  this.pushResult({ result, actual, expected, message });
 }
 
 // tests/acceptance/foo-test.js
