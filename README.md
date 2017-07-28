@@ -89,6 +89,10 @@ module('Acceptance | foo', {
 });
 ```
 
+The import path should point at your `tests` folder. Alternatively, you could use an absolute path:
+
+    import { assertionInjector, assertionCleanup } from '<your app name>/tests/assertions'; 
+
 ## Authors ##
 
 * [Brian Cardarella](http://twitter.com/bcardarella)
