@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { assertionInjector } from '../assertions';
 
-module('assertions', {
+module('assertions in old testing API', {
   beforeEach() {
     assertionInjector();
   }
