@@ -1,16 +1,14 @@
-import Ember from 'ember';
+/* global requirejs */
 import { default as environment } from '../config/environment';
-
-const {
-  camelize
-} = Ember.String;
+import { camelize } from '@ember/string';
+import { A } from '@ember/array';
 
 let assertionCache;
 
 function assertions() {
   if (!assertionCache) {
     const { modulePrefix } = environment;
-    const entries = Ember.A(Object.keys(requirejs.entries));
+    const entries = A(Object.keys(requirejs.entries));
     const pattern = new RegExp(`^${modulePrefix}/tests/assertions/[\\w-]+$`);
 
     assertionCache = entries.reduce(function(entries, entry) {
@@ -50,7 +48,7 @@ function assertionInjector(context) {
 function assertionCleanup() {
   let _assertions = assertions();
 
-  Object.keys(_assertions).forEach(function(assertion) {
+  Object.keys(_assertions).forEach(function() {
     delete window.QUnit.assert[assertions];
   });
 }
