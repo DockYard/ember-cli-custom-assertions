@@ -48,8 +48,8 @@ function assertionInjector(context) {
 function assertionCleanup() {
   let _assertions = assertions();
 
-  Object.keys(_assertions).forEach(function() {
-    delete window.QUnit.assert[assertions];
+  Object.keys(_assertions).forEach(function(assertion) {
+    delete window.QUnit.assert[assertion];
   });
 }
 
