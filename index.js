@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-custom-assertions'
+  name: require('./package').name
 };
