@@ -1,13 +1,10 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
-import { assertionInjector } from '../assertions';
+import setupCustomAssertions from 'ember-cli-custom-assertions/test-support';
 
-module('assertions in new testing API', function(hooks) {
+module('default setup', function(hooks) {
   setupTest(hooks);
-
-  hooks.beforeEach(function() {
-    assertionInjector(this.owner);
-  });
+  setupCustomAssertions(hooks);
 
   test('can inject custom assertions', function(assert) {
     assert.expect(2);

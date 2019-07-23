@@ -55,7 +55,7 @@ ember g assertion double-trouble
 ### Assertion
 
 A `context` is always injected as the first argument. You don't need to
-pass a context when calling the assertion, only when injecting the insertions into your app.
+pass a context when calling the assertion.
 
 ```js
 // good
@@ -67,14 +67,30 @@ assert.contains(app, '.foo', 'Foo bar');
 
 ### Setup
 
-You must inject the assertions and pass the context along.
+You must inject the assertions to use them in tests.
 
-For example, with acceptance tests you can inject in `beforeEach` and
-cleanup in `afterEach`:
+#### New testing API
+
+```javascript
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
+import setupCustomAssertions from 'ember-cli-custom-assertions/test-support';
+
+module('default setup', function(hooks) {
+  setupTest(hooks);
+  setupCustomAssertions(hooks);
+
+  test('can inject custom assertions', function(assert) {
+    assert.contains('.foo', 'Foo bar');
+  });
+});
+```
+
+#### Old testing API
 
 ```javascript
 // ...
-import { assertionInjector, assertionCleanup } from '../assertions';
+import { assertionInjector, assertionCleanup } from 'ember-cli-custom-assertions/test-support';
 
 module('Acceptance | foo', {
   beforeEach: function() {
@@ -88,10 +104,6 @@ module('Acceptance | foo', {
   }
 });
 ```
-
-The import path should point at your `tests` folder. Alternatively, you could use an absolute path:
-
-    import { assertionInjector, assertionCleanup } from '<your app name>/tests/assertions';
 
 ## Authors ##
 
