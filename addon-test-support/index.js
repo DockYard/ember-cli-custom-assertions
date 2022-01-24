@@ -10,7 +10,7 @@ function assertions(context) {
     const entries = A(Object.keys(requirejs.entries));
     const pattern = new RegExp(`^${modulePrefix}/tests/assertions/[\\w-]+$`);
 
-    assertionCache = entries.reduce(function(entries, entry) {
+    assertionCache = entries.reduce(function (entries, entry) {
       if (entry.match(pattern)) {
         let splitEntry = entry.split('/');
         let fn = requirejs(entry)['default'];
@@ -30,8 +30,8 @@ function assertions(context) {
 export function assertionInjector(context) {
   let _assertions = assertions(context);
 
-  Object.keys(_assertions).forEach(function(assertion) {
-    window.QUnit.assert[assertion] = function() {
+  Object.keys(_assertions).forEach(function (assertion) {
+    window.QUnit.assert[assertion] = function () {
       let fn = _assertions[assertion];
       let args = Array.prototype.slice.call(arguments);
 
@@ -47,16 +47,16 @@ export function assertionInjector(context) {
 export function assertionCleanup() {
   let _assertions = assertions();
 
-  Object.keys(_assertions).forEach(function(assertion) {
+  Object.keys(_assertions).forEach(function (assertion) {
     delete window.QUnit.assert[assertion];
   });
 }
 
-export default function(hooks) {
-  hooks.beforeEach(function() {
+export default function (hooks) {
+  hooks.beforeEach(function () {
     assertionInjector(this.owner);
   });
-  hooks.afterEach(function() {
+  hooks.afterEach(function () {
     assertionCleanup();
   });
 }
