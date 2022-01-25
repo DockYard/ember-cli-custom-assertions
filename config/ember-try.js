@@ -56,6 +56,7 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             '@ember/jquery': '^1.1.0',
+            'ember-source': '~3.28.0',
           },
         },
       },
@@ -77,8 +78,14 @@ module.exports = async function () {
           },
         },
       },
-      embroiderSafe(),
-      embroiderOptimized(),
+      {
+        ...embroiderSafe(),
+        allowedToFail: true,
+      },
+      {
+        ...embroiderOptimized(),
+        allowedToFail: true,
+      }
     ],
   };
 };
