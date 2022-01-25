@@ -48,14 +48,11 @@ module.exports = async function () {
       },
       {
         name: 'ember-default-with-jquery',
-        env: {
-          EMBER_OPTIONAL_FEATURES: JSON.stringify({
-            'jquery-integration': true,
-          }),
-        },
+        command: 'ember test feature:enable jquery-integation',
         npm: {
           devDependencies: {
             '@ember/jquery': '^1.1.0',
+            '@ember/optional-features': '^2.0.0',
           },
         },
       },
@@ -77,8 +74,14 @@ module.exports = async function () {
           },
         },
       },
-      embroiderSafe(),
-      embroiderOptimized(),
+      {
+        ...embroiderSafe(),
+        allowedToFail: true,
+      },
+      {
+        ...embroiderOptimized(),
+        allowedToFail: true,
+      },
     ],
   };
 };
